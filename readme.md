@@ -13,6 +13,8 @@ Set up your NVIDIA Jetson Orin Nano Developer Kit with **JetPack 6.x**, enable *
   - [3. Install CV libraries via setup script](#3-install-cv-libraries-via-setup-script)
   - [Usage Example](#usage-example)
   - [References](#references)
+  - [create\_8gb\_swap.sh](#create_8gb_swapsh)
+  - [create\_jetson\_clocks\_service.sh](#create_jetson_clocks_servicesh)
 
 ---
 
@@ -108,6 +110,22 @@ sudo ./setup_jetson_orin.sh -b -v -l
 - [Jetson AI Lab Initial Setup Guide][3]
 
 ---
+
+## create_8gb_swap.sh
+
+- **Purpose**: Automates the creation and activation of a swap file on Linux systems (Nvidia Jetson Orin Nano Super here).
+- **Use**:
+  - Prompts the user for the desired swap size (default is 8GB).
+  - Sets up the swap file with higher priority for optimal performance.
+  - Ensures persistence by adding the swap file entry to `/etc/fstab`.
+
+## create_jetson_clocks_service.sh
+
+- **Purpose**: Automates the creation and activation of a systemd service for Jetson devices.
+- **Use**:
+  - Creates a `jetson_clocks.service` file to run the Jetson Clocks utility with the `--fan` option.
+  - Reloads the systemd daemon and enables the service for persistence.
+  - Starts the service automatically after creation.
 
 You're all set! 🎉 Enjoy full‑performance Jetson Orin Nano Super with your CV stack ready to go.
 

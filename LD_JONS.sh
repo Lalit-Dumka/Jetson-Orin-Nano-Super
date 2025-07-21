@@ -151,3 +151,9 @@ echo ""
 echo "✅  Setup complete! Please reopen your terminal or run 'source ~/.bashrc'."
 echo "--------------------X--X--X------------------------"
 echo ""
+
+
+
+------------------------------
+
+
