@@ -44,6 +44,20 @@ while getopts "bvlo" opt; do
     *) echo "Usage: $0 [-b] [-v] [-l] [-o]" >&2; exit 1 ;;
   esac
 done
+
+echo "---------------------------------------------------"
+echo "LD Jetson Orin Nano Setup Script"
+echo " Selected Options:"
+echo "  Brave Browser:   $INSTALL_BRAVE"
+echo "  VS Code:         $INSTALL_VSCODE"
+echo "  VLC Media Player: $INSTALL_VLC"
+echo "  OpenCV with CUDA:   $INSTALL_OPENCV"
+echo "---------------------------------------------------"
+
+if $INSTALL_OPENCV; then
+  echo "[INFO] OpenCV 4.10.0 with CUDA support will take a while to install. Be patient!"
+fi
+
 echo "-------------------------------------------  ------"
 echo "[1/9] Installing system & Python prerequisites..."
 echo "---------------------------------------------------"
@@ -85,9 +99,15 @@ echo ""
 pip3 install onnx onnxruntime "https://github.com/ultralytics/assets/releases/download/v0.0.0/onnxruntime_gpu-1.20.0-cp310-cp310-linux_aarch64.whl" || true
 
 if $INSTALL_OPENCV; then
-  echo "[6/9] Installing OpenCV4.10.0 via JetPack6.1 script..."
-  wget https://raw.githubusercontent.com/AastaNV/JEP/master/script/install_opencv4.10.0_Jetpack6.1.sh -O install_opencv4.sh
-  bash install_opencv4.sh -y
+
+echo "---------------------------------------------------"
+  echo "[6/9] Installing OpenCV4.10.0 with CUDA... Thanks to AastaNV!"
+  echo "this will take a while, please be patient!"
+  echo "---------------------------------------------------"
+  echo ""
+  # wget https://raw.githubusercontent.com/AastaNV/JEP/master/script/install_opencv4.10.0_Jetpack6.1.sh -O install_opencv4.sh
+  # Thanks to AastaNV for the OpenCV install script
+  bash ./install_opencv4.10.0_Jetpack6.1.sh -y
 fi
 
 echo "---------------------------------------------------"
@@ -148,12 +168,6 @@ rm -f cuda-keyring_1.1-1_all.deb \
       microsoft.gpg
 echo "---------------------------------------------------"
 echo ""
-echo "✅  Setup complete! Please reopen your terminal or run 'source ~/.bashrc'."
+echo "Setup complete! Please reopen your terminal or run 'source ~/.bashrc'. Reboot if necessary."
 echo "--------------------X--X--X------------------------"
 echo ""
-
-
-
-------------------------------
-
-

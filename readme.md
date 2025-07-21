@@ -1,10 +1,10 @@
-# Jetson-Orin-Nano-Super
+# Jetson-Orin-Nano-Super Setup
 
 Set up your NVIDIA Jetson Orin Nano Developer Kit with **JetPack 6.x**, enable **MAXN SUPER** power mode, and install essential computer‑vision libraries—all via an easy-to-use script.
 
 ## 🧰 Table of Contents
 
-- [Jetson-Orin-Nano-Super](#jetson-orin-nano-super)
+- [Jetson-Orin-Nano-Super Setup](#jetson-orin-nano-super-setup)
   - [🧰 Table of Contents](#-table-of-contents)
   - [Prerequisites](#prerequisites)
   - [0. Check current firmware version](#0-check-current-firmware-version)
@@ -87,7 +87,7 @@ Clone this repository to your Jetson device and run the provided bash installer:
 git clone https://github.com/lalit-dumka/jetson-orin-nano-super.git
 cd Jetson-Orin-Nano-Super
 chmod +x LD_JONS.sh
-sudo ./LD_JONS.sh -b -v -l -o
+bash ./LD_JONS.sh -b -v -l
 ```
 
 It will install the following libraries:
