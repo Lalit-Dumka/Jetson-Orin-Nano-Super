@@ -11,10 +11,11 @@ Set up your NVIDIA Jetson Orin Nano Developer Kit with **JetPack 6.x**, enable *
   - [1. Upgrade to “Super” mode](#1-upgrade-to-super-mode)
   - [2. Flashing the microSD card](#2-flashing-the-microsd-card)
   - [3. Install CV libraries via setup script](#3-install-cv-libraries-via-setup-script)
-  - [Usage Example](#usage-example)
-  - [References](#references)
+    - [Usage Example](#usage-example)
+  - [Go Headless](#go-headless)
   - [create\_8gb\_swap.sh](#create_8gb_swapsh)
   - [create\_jetson\_clocks\_service.sh](#create_jetson_clocks_servicesh)
+  - [References](#references)
 
 ---
 
@@ -97,7 +98,7 @@ Options (`-b`, `-v`, `-l`, `-o`) allow optional installation of **Brave**, **VS 
 
 ---
 
-## Usage Example
+### Usage Example
 
 ```bash
 sudo ./setup_jetson_orin.sh -b -v -l
@@ -105,9 +106,20 @@ sudo ./setup_jetson_orin.sh -b -v -l
 
 ---
 
-## References
+## Go Headless
 
-- [Jetson AI Lab Initial Setup Guide][3]
+If you want to run your Jetson Orin Nano Super headless (without a monitor) persistently, you can set it up to run in headless mode. This is useful for remote access and running applications without a display.
+To enable headless mode, run the following command:
+
+```bash
+sudo systemctl set-default multi-user.target
+```
+
+To revert back to graphical mode, run:
+
+```bash
+sudo systemctl set-default graphical.target
+```
 
 ---
 
@@ -128,6 +140,14 @@ sudo ./setup_jetson_orin.sh -b -v -l
   - Starts the service automatically after creation.
 
 You're all set! 🎉 Enjoy full‑performance Jetson Orin Nano Super with your CV stack ready to go.
+
+---
+
+## References
+
+- [Jetson AI Lab Initial Setup Guide][3]
+
+---
 
 [1]: https://developer.nvidia.com/downloads/embedded/l4t/r35_release_v5.0/jp513-orin-nano-sd-card-image.zip "Jetpack 5.1.3 Official Image"
 [2]: https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.3/jp62-orin-nano-sd-card-image.zip "Jetpack 6.x Official Image"
