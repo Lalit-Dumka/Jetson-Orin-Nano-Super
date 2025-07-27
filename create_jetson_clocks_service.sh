@@ -2,19 +2,20 @@
 
 # Create the Jetson Clocks service file
 echo "Creating Jetson Clocks service file..."
-sudo bash -c 'cat > /etc/systemd/system/jetson_clocks.service <<EOF
+sudo tee /etc/systemd/system/jetson_clocks.service > /dev/null <<EOF
 [Unit]
 Description=Jetson Clocks Service
 After=multi-user.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/jetson_clocks --fan
+ExecStartPre=/bin/sleep 10
+ExecStart=/bin/bash -c '/usr/bin/jetson_clocks --fan'
 RemainAfterExit=true
 
 [Install]
 WantedBy=multi-user.target
-EOF'
+EOF
 
 # Reload systemd daemon
 echo "Reloading systemd daemon..."
